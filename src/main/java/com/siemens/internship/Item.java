@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,11 @@ public class Item {
     private String description;
     private String status;
 
+    /**
+     * Added email validation with regex that checks that the email has allowed characters and
+     * annotation that ensures the field contains a valid email format
+     */
     // Add email regex validation
+    @Email(regexp = "^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")
     private String email;
 }
